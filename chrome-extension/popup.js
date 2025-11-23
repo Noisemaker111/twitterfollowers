@@ -1,5 +1,11 @@
 let scrapedData = []
-const chrome = window.chrome // Declare the chrome variable
+
+// Listen for progress updates
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "progress") {
+    document.getElementById("status").innerText = `Scraping... ${request.current}/${request.total}`
+  }
+});
 
 document.getElementById("scrapeBtn").addEventListener("click", async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
