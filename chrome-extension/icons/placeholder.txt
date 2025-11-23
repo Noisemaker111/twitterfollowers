@@ -1,0 +1,1 @@
+Placeholder for icons. In a real extension, you would add .png files here.
