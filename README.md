@@ -1,30 +1,56 @@
-# Twitter follower map
+# BlockedByCountry (MyXFollowing)
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A privacy-focused tool to visualize your Twitter/X network. See where your followers are from, when they joined, and who you've blocked, organized by country.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/jon-aa53b5da/v0-twitter-follower-map)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/v4BFoROzVY8)
+## 🚀 Getting Started
 
-## Overview
+This project consists of two parts:
+1. **Chrome Extension**: Scrapes your data locally from Twitter/X.
+2. **Web Dashboard**: Visualizes the scraped data (runs locally or hosted).
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+### Step 1: Install the Chrome Extension
 
-## Deployment
+Since this is a custom tool, you'll need to install it in "Developer Mode":
 
-Your project is live at:
+1.  Download this project and unzip it.
+2.  Open Chrome and navigate to `chrome://extensions`.
+3.  Toggle **Developer mode** in the top right corner.
+4.  Click **Load unpacked** (top left).
+5.  Select the `chrome-extension` folder inside this project.
+6.  The "MyXFollowing Exporter" extension should now appear in your list.
 
-**[https://vercel.com/jon-aa53b5da/v0-twitter-follower-map](https://vercel.com/jon-aa53b5da/v0-twitter-follower-map)**
+### Step 2: Get Your Data
 
-## Build your app
+1.  Go to [x.com](https://x.com) and log in.
+2.  Navigate to your **Followers**, **Following**, or **Blocked** list (e.g., `https://x.com/your_handle/followers`).
+3.  **Important**: Scroll down a little bit first to ensure the page is fully active.
+4.  Click the **MyXFollowing extension icon** in your browser toolbar.
+5.  Click **"Scrape Visible Users"**.
+    *   The extension will automatically scroll down and collect user data.
+    *   *Note: This process respects Twitter's rate limits. If it pauses, just wait.*
+6.  When you have enough users, click **"Stop & Save"** (or wait for it to finish).
+7.  Click **"Download JSON"** to save your `followers.json` file.
 
-Continue building your app on:
+### Step 3: Visualize Your Network
 
-**[https://v0.app/chat/v4BFoROzVY8](https://v0.app/chat/v4BFoROzVY8)**
+1.  Open the web app (if running locally: `http://localhost:3000`, or use the public link provided).
+2.  Click **"Import Data"** or **"Upload Extension Data"**.
+3.  Select the `followers.json` file you just downloaded.
+4.  Explore your dashboard!
+    *   **Filter** by Status (Follower, Following, Blocked).
+    *   **Search** by username or country.
+    *   **View Charts** for join dates and account status distribution.
 
-## How It Works
+## 🛠 Troubleshooting
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+**"Joined Date" or "Country" shows as "-" or "Unknown"?**
+*   **Fix**: This usually happens if the extension couldn't authenticate the background API request.
+    1.  Refresh the Twitter page.
+    2.  Scroll down to load at least one batch of new users *before* opening the extension.
+    3.  Open the extension and try scraping again.
+*   **Rate Limits**: If you see "Rate Limited", the extension will pause. This is normal. Wait 15 minutes or try again later.
+
+## 🔒 Privacy
+
+*   **Your data stays local.** The JSON file is generated in your browser and processed in your browser.
+*   No data is sent to any external server.
