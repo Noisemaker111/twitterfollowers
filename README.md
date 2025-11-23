@@ -54,3 +54,9 @@ Since this is a custom tool, you'll need to install it in "Developer Mode":
 
 *   **Your data stays local.** The JSON file is generated in your browser and processed in your browser.
 *   No data is sent to any external server.
+
+## 🙏 Credits
+
+This project was built with inspiration and code from:
+*   [x-twitter_location_display](https://github.com/RAY1133/x-twitter_location_display)
+*   [twitter-account-location-in-username](https://github.com/RhysSullivan/twitter-account-location-in-username)
