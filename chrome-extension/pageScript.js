@@ -76,8 +76,10 @@
     if (!headersReady) {
       console.log("No Twitter headers captured yet, using defaults")
       twitterHeaders = {
-        Accept: "application/json",
+        Accept: "*/*",
         "Content-Type": "application/json",
+        "x-twitter-active-user": "yes",
+        "x-twitter-client-language": "en",
       }
       headersReady = true
     }
@@ -100,6 +102,8 @@
         }
         return null
       }
+
+      await new Promise((r) => setTimeout(r, Math.random() * 500 + 200))
 
       try {
         const variables = JSON.stringify({
