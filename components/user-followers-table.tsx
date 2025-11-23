@@ -73,14 +73,14 @@ export default function UserFollowersTable({ followers }: UserFollowersTableProp
       {/* Table */}
       <Card className="overflow-hidden bg-background/50 backdrop-blur-sm border-border/50">
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[800px]">
             <thead className="bg-muted/30 border-b border-border">
               <tr>
                 <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground w-16">#</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground">User</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground">Status</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground">Joined Twitter</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground">Location</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground min-w-[200px]">User</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground w-32">Status</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground w-40">Joined Twitter</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground w-40">Location</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/50">
@@ -101,7 +101,7 @@ export default function UserFollowersTable({ followers }: UserFollowersTableProp
                       <Badge
                         variant="secondary"
                         className={cn(
-                          "font-normal",
+                          "font-normal whitespace-nowrap",
                           follower.status === "Following" && "bg-blue-500/10 text-blue-500 hover:bg-blue-500/20",
                           follower.status === "Follower" &&
                             "bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20",
@@ -112,12 +112,16 @@ export default function UserFollowersTable({ followers }: UserFollowersTableProp
                       </Badge>
                     </td>
                     <td className="py-4 px-6">
-                      <div className="flex items-center gap-2 text-muted-foreground">
+                      <div className="flex items-center gap-2 text-muted-foreground whitespace-nowrap">
                         <Calendar className="h-3 w-3" />
-                        <span className="text-sm">{follower.joinedDate}</span>
+                        <span className="text-sm">
+                          {follower.joinedDate && follower.joinedDate !== "Unknown" ? follower.joinedDate : "-"}
+                        </span>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-muted-foreground text-sm">{follower.country}</td>
+                    <td className="py-4 px-6 text-muted-foreground text-sm whitespace-nowrap">
+                      {follower.country && follower.country !== "Unknown" ? follower.country : "-"}
+                    </td>
                   </tr>
                 ))
               )}
