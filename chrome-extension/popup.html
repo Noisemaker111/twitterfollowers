@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <meta charset="UTF-8">
   <style>
     body {
-      width: 300px;
+      width: 400px;
       padding: 15px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #000;
       color: #fff;
     }
+
     h2 {
       margin-top: 0;
       font-size: 18px;
+      display: inline-block;
     }
+
     button {
       width: 100%;
       padding: 10px;
@@ -24,9 +29,11 @@
       font-weight: bold;
       margin-top: 10px;
     }
+
     button:hover {
       background-color: #1a8cd8;
     }
+
     .status {
       margin-top: 10px;
       font-size: 14px;
@@ -34,12 +41,24 @@
     }
   </style>
 </head>
+
 <body>
-  <h2>MyXFollowing Exporter</h2>
-  <p>Navigate to your Followers, Following, or Blocked list on X.com and click below.</p>
-  <button id="scrapeBtn">Scrape Visible Users</button>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <h2>MyXFollowing</h2>
+  </div>
+
+  <p style="margin-top: 0;">Navigate to your Followers, Following, or Blocked list on X.com and click below.</p>
+
+  <div style="margin-bottom: 15px;">
+    <label for="limitSlider">Scrape Limit: <span id="limitDisplay">50</span></label>
+    <input type="range" id="limitSlider" min="10" max="5000" value="50" step="10" style="width: 100%;">
+  </div>
+
+  <button id="scrapeBtn">Scrape Users</button>
   <button id="downloadBtn" style="background-color: #2f3336; display: none;">Download JSON</button>
   <div id="status" class="status">Ready</div>
+
   <script src="popup.js"></script>
 </body>
+
 </html>
